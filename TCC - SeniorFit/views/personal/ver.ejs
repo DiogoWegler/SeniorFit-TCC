@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <%- include('../layouts/head') %>
+  <link href="\css\style.css" type="text/css" rel="stylesheet">
+</head>
+<header>
+  <%- include('../layouts/header') %>
+</header>
+
+<body style="background: #D2E2F2;">
+    <% if (erro != '') { %>
+        <div class="d-flex justify-content-center">
+            <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show mt-4 position-absolute"
+                role="alert" style="width: 50%; font-size: larger;">
+                <svg class="bi flex-shrink-0 me-2" role="img" viewBox="0 0 16 16" width="18" height="18"
+                    fill="currentColor" aria-label="Danger:">
+                    <path
+                        d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </svg>
+                <div>
+                    <%= erro %>
+                        <div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+        <% if (sucesso != '') { %>
+            <div class="d-flex justify-content-center">
+                <div class="alert alert-success d-flex align-items-center alert-dismissible fade show mt-4 position-relative" role="alert" style="width: 50%; font-size: larger;">
+                    <svg class="bi flex-shrink-0 me-2" role="img" viewBox="0 0 16 16" width="18" height="18" fill="currentColor" aria-label="Success:">
+                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z" />
+                    </svg>
+                    <div>
+                        <%= sucesso %> 
+                        <div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    <div class="container" style="border-radius: 40px;">
+        <nav class="navbar navbar-expand-lg navbar-light" style="border: 2px solid #fff; margin-top: 2%; background-color: #5294CC;  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); border-radius: 40px;">
+            <div class="container-fluid">
+                <span class="navbar-text mx-auto" style="font-size: 36px; color: #FFF;">
+                    Seus Alunos
+                </span>
+            </div>
+        </nav>
+    </div>
+    <% if (alunos !=  '') { %>
+    <% alunos.forEach(function(alunos){ %>
+    <div class="container">
+        <div class="container">
+          <nav class="navbar navbar-expand-lg navbar-light" style="margin-top: 2%; background-color: #8CBBDC; border-radius: 15px; border: 2px solid #fff; box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);">
+            <div class="container">
+              <div class="navbar-brand d-flex align-items-center">
+                <div class="container">
+                  <div class="navbar-brand d-flex align-items-center">
+                    <div class="row">
+                      <div class="col-lg-6">
+                        <span style="font-size: 30px; color: #000;">Nome do aluno:<br></span>
+                        <span style="font-size: 30px; color: #FFF;"><%= alunos.nome %><br></span>
+                        <span style="font-size: 30px; color: #000;">Email do aluno:<br></span>
+                        <span style="font-size: 30px; color: #FFF; word-wrap: break-word;"><%= alunos.email %><br></span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 d-flex align-items-right justify-content-end">
+                <a href="/personal/visualizaravaliacoes/<%= alunos.id %>" class="navbar-icon" style="margin-right: 40px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" fill="currentColor" class="bi bi-file-text" viewBox="0 0 16 16">
+                        <path d="M5 4a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm-.5 2.5A.5.5 0 0 1 5 6h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zM5 8a.5.5 0 0 0 0 1h6a.5.5 0 0 0 0-1H5zm0 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1H5z"/>
+                        <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+                      </svg>
+                </a>
+                <a href="/personal/visualizarfeedback/<%= alunos.id %>" class="navbar-icon" style="margin-right: 40px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" fill="currentColor" class="bi bi-send-arrow-down-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M15.854.146a.5.5 0 0 1 .11.54L13.026 8.03A4.5 4.5 0 0 0 8 12.5c0 .5 0 1.5-.773.36l-1.59-2.498L.644 7.184l-.002-.001-.41-.261a.5.5 0 0 1 .083-.886l.452-.18.001-.001L15.314.035a.5.5 0 0 1 .54.111ZM6.637 10.07l7.494-7.494.471-1.178-1.178.471L5.93 9.363l.338.215a.5.5 0 0 1 .154.154l.215.338Z"/>
+                        <path fill-rule="evenodd" d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.354-1.646a.5.5 0 0 1-.722-.016l-1.149-1.25a.5.5 0 1 1 .737-.676l.28.305V11a.5.5 0 0 1 1 0v1.793l.396-.397a.5.5 0 0 1 .708.708l-1.25 1.25Z"/>
+                      </svg>
+                </a>
+                <a href="/personal/editar/<%= alunos.id %>" class="navbar-icon" style="margin-right: 40px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="40" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
+                        <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
+                      </svg>
+                </a>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </div>
+        <% }) %>
+        <% } else { %>
+            <div class="text-center mt-5">
+                <h2 class="mb-3">Nenhum aluno encontrado!</h2>
+                <a type="button" class="btn btn-outline-primary" href="/personal/cadastroaluno">Cadastrar um aluno</a>
+            </div>
+        <% } %>
+    
+    
+    
+    
+    
+    
+    
+            
+    
+    
+</body>
+
+
+</html>

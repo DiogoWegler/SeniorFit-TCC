@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <%- include('../layouts/head') %>
+    
+</head>
+
+<header>
+    <%- include('../layouts/header') %>
+</header>
+<body style="background: #D2E2F2;">
+    
+  <div class="container my-5">
+    <div class="p-5 text-center rounded-3 custom-background">
+      <img src="\images\index\indexsenior.png" width="300" height="300" alt="Bootstrap Image">
+      <h1 class="text-body-emphasis" style="font-size: 60px;">Bem vindo de volta!</h1>
+      <p class="col-lg-8 mx-auto fs-1 text-muted">
+        O que você deseja fazer agora?
+      </p>
+      <div class="d-inline-flex gap-2 mb-5">
+        <a href="/aluno/visualizartreinos/<%= aluno.id %>" class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill btn-lg" type="button">
+          VER MEUS TREINOS
+        </a>
+        <a href="/aluno/visualizaravaliacao/<%= aluno.id %>" class="btn btn-outline-secondary btn-lg px-4 rounded-pill" type="button">
+          VER MEU PROGRESSO
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

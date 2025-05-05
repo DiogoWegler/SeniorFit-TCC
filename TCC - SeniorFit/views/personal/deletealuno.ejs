@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <%- include('../layouts/head') %>
+  <link href="\css\style.css" type="text/css" rel="stylesheet">
+</head>
+<header>
+  <%- include('../layouts/header') %>
+</header>
+
+<body style="background: #D2E2F2;">
+    <div class="container" style="border-radius: 40px;">
+        <nav class="navbar navbar-expand-lg navbar-light" style="border: 1px solid #000; margin-top: 2%; background-color: #5294CC;  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); border-radius: 40px;">
+            <div class="container-fluid">
+                <span class="navbar-text mx-auto" style="font-size: 36px; color: #FFF;">
+                    Seus Alunos
+                </span>
+            </div>
+        </nav>
+    </div>
+    <% if (aluno !=  '') { %>
+    <% aluno.forEach(function(aluno){ %>
+        <div class="text-center mt-5">
+            <h2 class="mb-3">Tem certeza que deseja deletar o aluno "<%= aluno.nome %>"?</h2>
+            <a type="button" style="width: 5; font-size: 20px;" class="btn btn-outline-danger" href="/personal/visualizar/delete/<%= aluno.id %>">Deletar</a>
+            <a type="button" style="width: 5; font-size: 20px;" class="btn btn-outline-primary" href="/personal/visualizar">Voltar</a>
+        </div>
+        <% }) %>
+        <% } else { %>
+            <div class="text-center mt-5">
+                <h2 class="mb-3">Nenhum aluno encontrado!</h2>
+                <a type="button" class="btn btn-outline-primary" href="/personal/cadastroaluno">Cadastrar um aluno</a>
+            </div>
+        <% } %>
+    
+    
+    
+    
+    
+    
+    
+    
+            
+    
+    
+</body>
+
+
+</html>

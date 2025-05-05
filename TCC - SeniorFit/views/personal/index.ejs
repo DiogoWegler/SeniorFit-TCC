@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <%- include('../layouts/head') %>
+</head>
+<header>
+  <%- include('../layouts/header') %>
+</header>
+
+<body style="background: #D2E2F2;">
+  <div class="container my-5">
+    <div class="p-5 text-center rounded-3 custom-background">
+      <img src="\images\index\indexsenior.png" width="300" height="300" alt="Bootstrap Image">
+      <h1 class="text-body-emphasis" style="font-size: 60px;">Bem vindo de volta personal!</h1>
+      <p class="col-lg-8 mx-auto fs-1 text-muted">
+        Pronto para ajudar seus alunos?
+      </p>
+      <div class="d-inline-flex gap-2 mb-5">
+        <a href="/personal/cadastroaluno" class="d-inline-flex align-items-center btn btn-primary btn-lg px-4 rounded-pill btn-lg" type="button">
+          CADASTRAR NOVO ALUNO
+        </a>
+        <a href="/personal/visualizar" class="btn btn-outline-secondary btn-lg px-4 rounded-pill" type="button">
+          GERENCIAR MEUS ALUNOS
+        </a>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+</html>

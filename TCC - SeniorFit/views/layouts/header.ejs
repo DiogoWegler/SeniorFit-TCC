@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg" style="background-color: #247BC3;">
+    <div class="container-fluid">
+        <% if (user) { %>
+            <% if (user.tipo === 'Personal') { %>
+        <a class="nav-brand" href="/personal">
+            <img src="\images\index\seniorfit2.png" style="width: 25%;
+            height: 25%;" alt="Logo" class="d-inline-block align-text-top">
+        </a>
+            <% } else if (user.tipo === 'Aluno') { %>
+                <a class="nav-brand" href="/aluno">
+                    <img src="\images\index\seniorfit2.png" style="width: 25%;
+                    height: 25%;" alt="Logo" class="d-inline-block align-text-top">
+                </a>
+            <% } %>
+        <% } else { %>
+            <a class="nav-brand" href="/">
+                <img src="\images\index\seniorfit2.png" style="width: 25%;
+                height: 25%;" alt="Logo" class="d-inline-block align-text-top">
+            </a>
+        <% } %>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02" style="margin:auto;">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                </li>
+                <li class="nav-item">
+                </li>
+                <li class="nav-item">
+                </li>
+            </ul>
+            
+            <form class="d-flex" role="search">
+                <% if (user) { %>
+                    <a href="/logout" style="margin-top: 1px; 
+                    border-radius: 30px; 
+                    border: 3px solid #FFF; 
+                    background: rgba(255, 255, 255, 0.00); 
+                    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+                    width: 163.442px; 
+                    height: 49px; 
+                    flex-shrink: 0;
+                    padding: .6rem 0; 
+                    color: white;" class="btn btn-outline-light navbar-item" type="submit">SAIR</a>
+                <% } else { %>
+                    <a href="/login" style="margin-top: 1px; 
+                    border-radius: 30px; 
+                    border: 3px solid #FFF; 
+                    background: rgba(255, 255, 255, 0.00); 
+                    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25); 
+                    width: 163.442px; 
+                    height: 49px; 
+                    flex-shrink: 0;
+                    padding: .6rem 0; 
+                    color: white;" class="btn btn-outline-light navbar-item" type="submit">ENTRAR</a>
+                <% } %>
+            </form>
+        </div>
+    </div>
+</nav>

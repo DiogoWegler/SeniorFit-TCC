@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <%- include('../layouts/head') %>
+</head>
+
+<header>
+    <%- include('../layouts/header') %>
+</header>
+
+<body style="background: #D2E2F2;">
+    <% if (erro) { %>
+        <div class="d-flex justify-content-center">
+            <div class="alert alert-danger d-flex align-items-center alert-dismissible fade show mt-4 position-absolute"
+                role="alert" style="width: 28%; margin-left: 16%; font-size: larger;">
+                <svg class="bi flex-shrink-0 me-2" role="img" viewBox="0 0 16 16" width="18" height="18"
+                    fill="currentColor" aria-label="Danger:">
+                    <path
+                        d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z" />
+                </svg>
+                <div>
+                    <%= erro %>
+                        <div>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                aria-label="Close"></button>
+                        </div>
+                </div>
+            </div>
+        </div>
+        <% } %>
+</div>
+    
+    <section class="vh-100">
+        <div class="container-fluid h-custom">
+          <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-md-9 col-lg-6 col-xl-5">
+              <img src="\images\index\seniorfitlogo3.png"
+                class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+              <form method="POST" action="/login"> 
+                <div class="container">
+                    <h1>Login</h1>
+                    <label class="form-label" for="form3Example3" style="font-size: 20px; margin-top: 1%;">Tipo de usuário</label>
+                    <select required name="tipo" id="sel1" class="form-select form-select-lg custom-select" style="border-radius: 5px;">
+                      <option selected disabled>Selecione o tipo de usuário</option>
+                      <option value="Aluno">Aluno</option>
+                      <option value="Personal">Personal</option>
+                    </select>
+                </div>
+                <div class="form-outline mb-3" style="border-radius: 4px; padding: 10px; font-size: 18px; margin-top: 1%;">
+                    <label class="form-label" for="form3Example3" style="font-size: 20px; margin-top: 3%;">Endereço de Email</label>
+                    <input required type="email" name="email" id="form3Example3" class="form-control form-control-lg"
+                      placeholder="Insira aqui o seu Email!" style="font-size: 20px; height: 50px;" />
+                  </div>
+                  
+                  <div class="form-outline mb-3" style="border-radius: 4px; padding: 10px; font-size: 18px;">
+                    <label class="form-label" for="form3Example4" style="font-size: 20px;">Senha</label>
+                    <input required type="password" name="senha" id="form3Example4" class="form-control form-control-lg"
+                      placeholder="Insira aqui sua senha!" style="font-size: 20px; height: 50px;" />
+                  </div>
+                  
+      
+                <div class="d-flex justify-content-between align-items-center">
+                 
+                <div class="text-center text-lg-start mt-4 pt-2 container">
+                  <button type="submit" class="btn btn-primary btn-lg custom-btn3"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem; font-size: 20px;">Login</button>
+                    <div style="margin-top: 5%;">
+                  <p class="small fw-bold mt-2 pt-1 mb-0" style="font-size: 20px;">Não tem uma conta de personal? <a href="/cadastropersonal"
+                      class="link-primary" style="font-size: 20px;">Cadastre-se</a></p></div>
+                </div>
+      
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+</body>
+
+
+</html>
