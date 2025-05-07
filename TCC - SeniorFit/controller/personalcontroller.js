@@ -126,36 +126,31 @@ module.exports = {
     },
     destroyaluno: async function (req, res) {
         const id = req.params.id;
-        const aluno = await Aluno.findByPk(id);
-        const treinos = await Treinos.findAll({ where: { id_aluno: id } });
-        const avaliacao = await Avaliacao.findAll({ where: { id_aluno: id } });
-        const feedback = await Feedback.findAll({ where: { id_aluno: id } });
-        const exercicios = await Exercicios.findAll({ where: { id_treino: treinos.map(treino => treino.id) } });
-
-
-        // Remove os exercícios relacionados ao aluno
-        await Exercicios.destroy({ where: { id_treino: treinos.map(treino => treino.id) } });
-
-        
-        await Feedback.destroy({ where: { id_feedback: feedback.map(feedback => feedback.id) } });
-
-        await Avaliacao.destroy({ where: { id_avaliacao: avaliacao.map(avaliacao => avaliacao.id) } });
-
-        // Remove os treinos relacionados ao aluno
-        await Treinos.destroy({ where: { id_aluno: id } });
-
-        
-        // Remove o aluno
-        await Aluno.destroy({ where: { id: id } })
-            .then(result => {
+        try {
+            const treinos = await Treinos.findAll({ where: { id_aluno: id } });
+    
+            const treinoIds = treinos.map(treino => treino.id_treino);
+    
+            // Deleta todos os exercícios relacionados aos treinos
+            await Exercicios.destroy({ where: { id_treino: treinoIds } });
+    
+            // Deleta feedbacks e avaliações
+            await Feedback.destroy({ where: { id_aluno: id } });
+            await Avaliacao.destroy({ where: { id_aluno: id } });
+    
+            // Deleta os treinos do aluno
+            await Treinos.destroy({ where: { id_aluno: id } });
+    
+            // Deleta o aluno
+            await Aluno.destroy({ where: { id: id } });
+    
             req.flash('sucesso', 'Aluno removido com sucesso!');
             res.redirect('/personal/visualizar');
-        })
-            .catch(err => {
+        } catch (err) {
             console.log(err);
             req.flash('erro', 'Erro ao remover aluno');
             res.redirect('/personal/visualizar');
-        });
+        }
     },
 
     editaluno: async function (req, res) {
